@@ -15,5 +15,5 @@ ENV IN_PROTO=TCP6 \
     TO_HOST=localhost \
     TO_PORT=8000 
 
-USER nobody
+#USER nobody # seem to break... 
 CMD socat -d -d $IN_PROTO-LISTEN:$IN_PORT,fork,su=nobody $TO_PROTO:$TO_HOST:$TO_PORT
