@@ -9,7 +9,11 @@ TO_HOST describes to hostname to forward the conenction to, defaults to localhos
 
 RUN apk add --update socat
 
-ENV IN_PROTO=TCP6 IN_PORT=8080 TO_PROTO=TCP4 TO_HOST=localhost TO_PORT=8000 
+ENV IN_PROTO=TCP6 \
+    IN_PORT=8080 \
+    TO_PROTO=TCP4 \
+    TO_HOST=localhost \
+    TO_PORT=8000 
 
 USER nobody
-CMD socat -d -d -d $IN_PROTO-LISTEN:$IN_PORT,fork,su=nobody $TO_PROTO:$TO_HOST:$TO_PORT
+CMD socat -d -d $IN_PROTO-LISTEN:$IN_PORT,fork,su=nobody $TO_PROTO:$TO_HOST:$TO_PORT
